@@ -1,4 +1,6 @@
 
+const GPIO_PIN_RELAY = 1;
+
 var api = null;
 var mod = null;
 
@@ -90,6 +92,8 @@ function init( moduleParam, apiParam ) {
 
 	);
 
+	// Set pin as output and write 0
+	spawnProgram( null, "gpio", [ "mode", "" + GPIO_PIN_RELAY, "out" ] );
 	setOutputPin( false );
 
 }
@@ -111,7 +115,7 @@ function onRelayTimer() {
 
 function setOutputPin( setOn ) {
 
-	// TODO
+	spawnProgram( null, "gpio", [ "write", "" + GPIO_PIN_RELAY, setOn ? "1" : "0" ] );
 
 }
 

@@ -523,6 +523,8 @@ function spawnProgram( cwd, program, args, callback, cancelOutput ) {
 
 function execProgram( cwd, command, callback, cancelOutput ) {
 
+	// Executes in a shell
+
 	var p;
 
 	if ( cwd ) p = exec( command, { cwd: cwd } );
