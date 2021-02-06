@@ -22,8 +22,7 @@ function init( moduleParam, apiParam ) {
 	mod.getInfoString = getTimerRemainingTimeString;
 	mod.finish = ( callback ) => {
 
-		setOutputPin( false );
-		callback();
+		setOutputPin( false, callback );
 
 	};
 	mod.menuEntrySelected = function() {
@@ -118,9 +117,9 @@ function onRelayTimer() {
 
 }
 
-function setOutputPin( setOn ) {
+function setOutputPin( setOn, callback ) {
 
-	api.spawnProgram( null, "gpio", [ "write", "" + GPIO_PIN_RELAY, setOn ? "1" : "0" ] );
+	api.spawnProgram( null, "gpio", [ "write", "" + GPIO_PIN_RELAY, setOn ? "1" : "0" ], callback );
 
 }
 
