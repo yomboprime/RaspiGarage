@@ -20,7 +20,12 @@ function init( moduleParam, apiParam ) {
 	};
 	mod.getConfigMenuLabel = () => { return null; };
 	mod.getInfoString = getTimerRemainingTimeString;
-	mod.finish = ( callback ) => { callback(); };
+	mod.finish = ( callback ) => {
+
+		setOutputPin( false );
+		callback();
+
+	};
 	mod.menuEntrySelected = function() {
 
 		if ( relayTimerIntervalId === 0 ) {
