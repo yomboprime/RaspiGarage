@@ -559,6 +559,7 @@ function execProgram( cwd, command, callback, cancelOutput ) {
 
 function finish( action ) {
 
+	tg.clearAllMenus();
 	tg.stopTelegram();
 
 	stopModules( () => {
