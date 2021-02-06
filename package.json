@@ -1,0 +1,23 @@
+{
+  "name": "RaspiGaraje",
+  "version": "1.0.0",
+  "keywords": [
+    "home",
+    "domotics",
+    "raspberry",
+    "pi"
+  ],
+  "author": "yomboprime",
+  "contributors": [],
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "devDependencies": {},
+  "license": "MIT",
+  "dependencies": {
+    "form-data": "^3.0.0",
+    "pngjs": "^6.0.0",
+    "readable-stream": "^3.6.0",
+    "telegram-bot-api": "^2.0.1"
+  }
+}
