@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cd /home/pi/TeleHomeGuard
-npm start
+cd /home/pi/RaspiGarage
+node bot.js

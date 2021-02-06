@@ -33,10 +33,10 @@ Now the bot is ready to run, by issuing the command ```npm start```. You just wi
 
 ## Setting the bot to execute at system boot up
 
-Set the script ```RaspiGarage/run.sh``` to execute at system boot up. You may want to add the following lines to the end of the file ```/etc/rc.local```:
+Set the script ```RaspiGarage/run.sh``` to execute at system boot up. You may want to add lines like the following ones to the end of the file ```/etc/rc.local```:
 
 ```
-/home/pi/TeleHomeGuard/run.sh || exit 1
+/home/pi/RaspiGarage/run.sh || exit 1
 
 exit 0
 ```
