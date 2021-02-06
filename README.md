@@ -16,8 +16,8 @@ Features:
 
 ```npm install```
 
-	- Create the file ```RaspiGarage/config/token``` and copy the token for your bot in it, without line breaks.
-	- Set the script ```RaspiGarage/run.sh``` to execute at system boot up. You may want to add the following lines to the end of the file ```/etc/rc.local```:
+- Create the file ```RaspiGarage/config/token``` and copy in it the token for your bot, without line breaks.
+- Set the script ```RaspiGarage/run.sh``` to execute at system boot up. You may want to add the following lines to the end of the file ```/etc/rc.local```:
 
 ```
 /home/pi/TeleHomeGuard/run.sh || exit 1

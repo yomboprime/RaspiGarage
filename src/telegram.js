@@ -51,6 +51,7 @@ function startTelegram( botTokenParam, privateChatIdParam, parseUserInput, trans
 	tg.parseUserInput = parseUserInput;
 	botToken = botTokenParam;
 	privateChatId = privateChatIdParam;
+	if ( isNaN( privateChatId ) ) privateChatId = null;
 	translation = translationParam;
 
 	telegramAPI = new TG( {
@@ -260,8 +261,12 @@ function isMenuShown( menuName ) {
 
 function sendTextMessage( text, chat_id ) {
 
+	chat_id = chat_id === undefined ? privateChatId : chat_id;
+
+	if ( ! chat_id ) return;
+
 	telegramAPI.sendMessage( {
-		chat_id: chat_id === undefined ? privateChatId : chat_id,
+		chat_id: chat_id,
 		text: text,
 		parse_mode: 'Markdown'
 	} ).catch( console.error );
@@ -270,8 +275,12 @@ function sendTextMessage( text, chat_id ) {
 
 function deleteMessage( message_id, chat_id ) {
 
+	chat_id = chat_id === undefined ? privateChatId : chat_id;
+
+	if ( ! chat_id ) return;
+
 	telegramAPI.deleteMessage( {
-		chat_id: chat_id === undefined ? privateChatId : chat_id,
+		chat_id: chat_id,
 		message_id: message_id
 	} ).catch( console.error );
 
@@ -279,14 +288,20 @@ function deleteMessage( message_id, chat_id ) {
 
 function deleteMessageThen( message_id, callback, chat_id ) {
 
+	chat_id = chat_id === undefined ? privateChatId : chat_id;
+
+	if ( ! chat_id ) return;
+
 	telegramAPI.deleteMessage( {
-		chat_id: chat_id === undefined ? privateChatId : chat_id,
+		chat_id: chat_id,
 		message_id: message_id
 	} ).then( callback ).catch( console.error );
 
 }
 
 function sendMenu( menu ) {
+
+	if ( ! privateChatId ) return;
 
 	if ( ! menu ) {
 
@@ -371,6 +386,8 @@ function sendMenu( menu ) {
 
 function sendVideoFile( caption, videoPath, onSent ) {
 
+	if ( ! privateChatId ) return;
+
 	telegramAPI.sendVideo( {
 		caption: caption,
 		chat_id: privateChatId,
@@ -380,6 +397,8 @@ function sendVideoFile( caption, videoPath, onSent ) {
 }
 
 function sendPhoto( caption, imagePath, disable_notification, onSent ) {
+
+	if ( ! privateChatId ) return;
 
 	telegramAPI.sendPhoto( {
 		caption: caption,
@@ -393,6 +412,8 @@ function sendPhoto( caption, imagePath, disable_notification, onSent ) {
 function setRecordingStateOn( setOn ) {
 
 	// TODO old
+
+	if ( ! privateChatId ) return;
 
 	function sendAction() {
 
@@ -513,18 +534,14 @@ function uploadFileToTelegram( localPath, contentType, callback ) {
 
 	req.on( 'response', function( response ) {
 
-		//console.log( "------" + response.statusCode );
-
 		response.on( 'error', function( err ) {
 
-			//console.log( "------- error: " + err );
 			isError = true;
 
 		} );
 
 		response.on( 'end', function() {
 
-			console.log( "------- end" );
 			callback( isError );
 
 		} );
