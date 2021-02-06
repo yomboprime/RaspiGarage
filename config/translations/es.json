@@ -1,0 +1,66 @@
+{
+	"Telegram bot has started.": "Bot de Telegram iniciado.",
+	"Main menu": "Menú principal",
+
+	"Configuration": "Configuración",
+	"Configuration menu": "Menú de configuración",
+	"Return to main menu": "Volver a menú principal",
+	"No": "No",
+
+	"Restart computer": "Reiniciar ordenador",
+	"Confirm restart computer?": "¿Confirmar reiniciar ordenador?",
+	"Yes, restart computer": "Sí, reiniciar ordenador",
+	"Restarting computer...": "Reiniciando ordenador...",
+
+	"Shut down computer": "Apagar ordenador",
+	"Confirm shut down computer?": "¿Confirmar apagar ordenador?",
+	"Yes, shut down computer": "Sí, apagar ordenador",
+	"The computer will now shut down. When the green LED stops flashing, you can unplug it from the power.": "Ahora se apagará el ordenador. Cuando el LED verde deje de parpadear, puedes desenchufarlo de la corriente.",
+
+	"Update system": "Actualizar sistema",
+	"Confirm update system?": "¿Confirmar actualizar sistema?",
+	"Yes, update": "Sí, actualizar",
+	"Updating operating system...": "Actualizando sistema operativo...",
+	"Error: ": "Error: ",
+	"Error while updating operating system": "Error al actualizar sistema operativo",
+	"Installing updates...": "Instalando actualizaciones...",
+	"Error while installing updates": "Error al instalar actualizaciones",
+	"Updating application...": "Actualizando aplicación...",
+	"Error while updating application": "Error al actualizar aplicación",
+	"Installing application updates...": "Instalando actualizaciones de la aplicación...",
+	"Error while installing application updates": "Error al instalar actualizaciones de la aplicación",
+	"The system has been updated successfully. Restarting computer...": "El sistema se ha actualizado correctamente. Reiniciando ordenador...",
+
+	"Intruder alert!!!!\nSomeone has tried to use this Telegram bot.": "Alerta de intruso!!!!\nAlguien ha intentado usar este bot de Telegram.",
+
+	"Playing voice file...": "Reproduciendo archivo de voz...",
+	"Error downloading voice file.": "Error al descargar fichero de voz.",
+	"Error playing voice file: ": "Error reproduciendo archivo de voz: ",
+	"Voice file played successfully.": "Archivo de voz reproducido correctamente.",
+
+	"Change language": "Cambiar idioma",
+	"Language has been changed to ": "El idioma se ha cambiado a ",
+	"es": "Español",
+	"esFlag": "🇪🇸",
+	"en": "Inglés",
+	"enFlag": "🇲🇾🇬🇧",
+
+	"Get camera image": "🎥Capturar imagen",
+	"Configure camera": "Configurar cámara",
+	"Change camera resolution": "Cambiar resolución de la cámara",
+	"Current resolution: ": "Resolución actual: ",
+	"Camera resolution set to ": "Resolución de la cámara establecida en ",
+	"Change Frames Per Second": "Cambiar Fotogramas Por Segundo",
+	"Current FPS: ": "FPS actuales: ",
+	"Camera FPS set to ": "FPS de la cámara establecido en ",
+
+	"Relay timer...": "Temporizador de relé...",
+	"Set timer": "⏱🗒Ajustar temporizador",
+	"Start timer": "⏱▶️Comenzar temporizador",
+	"Stop timer": "⏱⏹Parar temporizador",
+	"The relay timer has finished": "⏱✅El temporizador del relé ha finalizado",
+	"You have stopped the relay timer.": "⏱🛑Usted ha parado el temporizador del relé.",
+	"Remaining: ": "Restantes: ",
+	"minutes": "minutos",
+	"seconds": "segundos"
+}

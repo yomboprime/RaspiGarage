@@ -1,0 +1,67 @@
+{
+	"Telegram bot has started.": "Telegram bot has started.",
+	"Main menu": "Main menu",
+
+	"Configuration": "Configuration",
+	"Configuration menu": "Configuration menu",
+	"Return to main menu": "Return to main menu",
+	"No": "No",
+
+	"Restart computer": "Restart computer",
+	"Confirm restart computer?": "Confirm restart computer?",
+	"Yes, restart computer": "Yes, restart computer",
+	"Restarting computer...": "Restarting computer...",
+
+	"Shut down computer": "Shut down computer",
+	"Confirm shut down computer?": "Confirm shut down computer?",
+	"Yes, shut down computer": "Yes, shut down computer",
+	"The computer will now shut down. When the green LED stops flashing, you can unplug it from the power.": "The computer will now shut down. When the green LED stops flashing, you can unplug it from the power.",
+
+	"Update system": "Update system",
+	"Confirm update system?": "Confirm update system?",
+	"Yes, update": "Yes, update",
+	"Updating operating system...": "Updating operating system...",
+	"Error: ": "Error: ",
+	"Error while updating operating system": "Error while updating operating system",
+	"Installing updates...": "Installing updates...",
+	"Error while installing updates": "Error while installing updates",
+	"Updating application...": "Updating application...",
+	"Error while updating application": "Error while updating application",
+	"Installing application updates...": "Installing application updates...",
+	"Error while installing application updates": "Error while installing application updates",
+	"The system has been updated successfully. Restarting computer...": "The system has been updated successfully. Restarting computer...",
+
+	"Intruder alert!!!!\nSomeone has tried to use this Telegram bot.": "Alerta de intruso!!!!\nAlguien ha intentado usar este bot de Telegram.",
+
+	"Playing voice file...": "Playing voice file...",
+	"Error downloading voice file.": "Error downloading voice file.",
+	"Error playing voice file: ": "Error playing voice file: ",
+	"Voice file played successfully.": "Voice file played successfully.",
+
+	"Change language": "Change language",
+	"Language has been changed to ": "Language has been changed to ",
+	"es": "Spanish",
+	"esFlag": "🇪🇸",
+	"en": "English",
+	"enFlag": "🇲🇾🇬🇧",
+
+	"Get camera image": "🎥Get camera image",
+	"Configure camera": "Configure camera",
+	"Change camera resolution": "Change camera resolution",
+	"Current resolution: ": "Current resolution: ",
+	"Camera resolution set to ": "Camera resolution set to ",
+	"Change Frames Per Second": "Change Frames Per Second",
+	"Current FPS: ": "Current FPS: ",
+	"Camera FPS set to ": "Camera FPS set to ",
+
+	"Relay timer...": "Relay timer...",
+	"Set timer": "⏱🗒Set timer",
+	"Start timer": "⏱▶️Start timer",
+	"Stop timer": "⏱⏹Stop timer",
+	"The relay timer has finished": "⏱✅The relay timer has finished",
+	"You have stopped the relay timer.": "⏱🛑You have stopped the relay timer.",
+	"Remaining: ": "Remaining: ",
+	"minutes": "minutes",
+	"seconds": "seconds"
+
+}

@@ -1,0 +1,16 @@
+{
+    "version": 1,
+    "languageCode": "en",
+    "translationEncodingAlias": "utf8",
+    "intruderAlert": true,
+    "modules": {
+        "Camera": {
+            "cameraDevice": "/dev/video0",
+            "cameraWidth": 640,
+            "cameraHeight": 480,
+            "cameraFPS": 5,
+            "captureTempPath": "./tempCaptures/"
+        },
+        "RelayTimer": {}
+    }
+}
