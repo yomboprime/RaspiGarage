@@ -1,11 +1,13 @@
 # RaspiGarage
 Telegram bot for controlling things (IoT) in a Raspberry Pi
 
-Features:
+Features implemented so far:
 
 	- Control a GPIO pin (usually connected to a relay) with timer and Telegram notifications. Uses wiringpi library.
 	- Get still images from a webcam in your Telegram client. Uses fswebcam package.
 	- Update, shut off or restart the system and the application from a menu in your Telegram client.
+
+Please note: using relays and mains voltage is dangerous. By using this software you accept the MIT License and are on your own about the risks involved.
 
 ## Quick install
 
