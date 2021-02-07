@@ -439,7 +439,7 @@ function updateSystem() {
 
 			tg.sendTextMessage( "ℹ️ " + translation[ "Updating application..." ] );
 
-			spawnProgram( null, "git", [ "pull", "origin", "master" ], ( code3, output3, error3 ) => {
+			spawnProgram( null, "git", [ "pull", "origin", "main" ], ( code3, output3, error3 ) => {
 
 				if ( code3 ) {
 
