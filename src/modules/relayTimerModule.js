@@ -1,5 +1,5 @@
 
-const GPIO_PIN_RELAY = -1;
+const GPIO_PIN_RELAY = 1;
 
 var api = null;
 var mod = null;
