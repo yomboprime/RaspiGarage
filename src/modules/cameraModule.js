@@ -242,7 +242,7 @@ function captureCamera() {
 
 			function onFrameCaptured() {
 
-				fs.rmSync( imagePath );
+				fs.unlinkSync( imagePath );
 
 			}
 
