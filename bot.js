@@ -210,7 +210,7 @@ function createMainMenu() {
 		}
 	);
 
-	tg.createYesNoMenu( translation[ "Confirm restart computer?" ], translation[ "Yes, restart computer" ], () => {
+	tg.createYesNoMenu( "Confirm restart computer?", translation[ "Yes, restart computer" ], () => {
 
 		tg.menusEnabled = false;
 		tg.sendTextMessage( "ℹ️ " + translation[ "Restarting computer..." ] );
@@ -218,7 +218,7 @@ function createMainMenu() {
 
 	}, "No", showMainMenu );
 
-	tg.createYesNoMenu( translation[ "Confirm shut down computer?" ], translation[ "Yes, shut down computer" ], () => {
+	tg.createYesNoMenu( "Confirm shut down computer?", translation[ "Yes, shut down computer" ], () => {
 
 		tg.menusEnabled = false;
 		tg.sendTextMessage( "ℹ️ " + translation[ "The computer will now shut down. When the green LED stops flashing, you can unplug it from the power." ] );
@@ -226,7 +226,7 @@ function createMainMenu() {
 
 	}, translation[ "No" ], showMainMenu );
 
-	tg.createYesNoMenu( translation[ "Confirm update system?" ], translation[ "Yes, update" ], updateSystem, translation[ "No" ], showMainMenu );
+	tg.createYesNoMenu( "Confirm update system?", translation[ "Yes, update" ], updateSystem, translation[ "No" ], showMainMenu );
 
 	tg.createMenu( "Change language", 1, false,
 
