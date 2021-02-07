@@ -177,16 +177,6 @@ function createMainMenu() {
 
 				switch ( optionLabel ) {
 
-					case translation[ "Change camera resolution" ]:
-						tg.clearAllMenus();
-						tg.sendMenu( tg.menusByName[ "Change camera resolution" ] );
-						break;
-
-					case translation[ "Change Frames Per Second" ]:
-						tg.clearAllMenus();
-						tg.sendMenu( tg.menusByName[ "Change Frames Per Second" ] );
-						break;
-
 					case translation[ "Restart computer" ]:
 						tg.clearAllMenus();
 						tg.sendMenu( tg.menusByName[ "Confirm restart computer?" ] );
@@ -220,7 +210,7 @@ function createMainMenu() {
 		}
 	);
 
-	tg.createYesNoMenu( translation[ "Confirm restart computer?" ], "", translation[ "Yes, restart computer" ], () => {
+	tg.createYesNoMenu( translation[ "Confirm restart computer?" ], translation[ "Yes, restart computer" ], () => {
 
 		tg.menusEnabled = false;
 		tg.sendTextMessage( "ℹ️ " + translation[ "Restarting computer..." ] );
@@ -228,7 +218,7 @@ function createMainMenu() {
 
 	}, "No", showMainMenu );
 
-	tg.createYesNoMenu( translation[ "Confirm shut down computer?" ], "", translation[ "Yes, shut down computer" ], () => {
+	tg.createYesNoMenu( translation[ "Confirm shut down computer?" ], translation[ "Yes, shut down computer" ], () => {
 
 		tg.menusEnabled = false;
 		tg.sendTextMessage( "ℹ️ " + translation[ "The computer will now shut down. When the green LED stops flashing, you can unplug it from the power." ] );
@@ -236,7 +226,7 @@ function createMainMenu() {
 
 	}, translation[ "No" ], showMainMenu );
 
-	tg.createYesNoMenu( translation[ "Confirm update system?" ], "", translation[ "Yes, update" ], updateSystem, translation[ "No" ], showMainMenu );
+	tg.createYesNoMenu( translation[ "Confirm update system?" ], translation[ "Yes, update" ], updateSystem, translation[ "No" ], showMainMenu );
 
 	tg.createMenu( "Change language", 1, false,
 
@@ -642,7 +632,7 @@ function getLocaleDate( callback ) {
 
 	spawnProgram( null, "date", [ ], ( code, output, err ) => {
 
-		callback( output );
+		callback( output.replace( '\n', '' ) );
 
 	} );
 

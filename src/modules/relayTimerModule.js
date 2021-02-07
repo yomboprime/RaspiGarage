@@ -1,5 +1,5 @@
 
-const GPIO_PIN_RELAY = 1;
+const GPIO_PIN_RELAY = -1;
 
 var api = null;
 var mod = null;
@@ -97,7 +97,11 @@ function init( moduleParam, apiParam ) {
 	);
 
 	// Set pin as output and write 0
-	api.spawnProgram( null, "gpio", [ "mode", "" + GPIO_PIN_RELAY, "out" ] );
+	if ( GPIO_PIN_RELAY >= 0 ) {
+
+		api.spawnProgram( null, "gpio", [ "mode", "" + GPIO_PIN_RELAY, "out" ] );
+
+	}
 	setOutputPin( false );
 
 }
@@ -119,7 +123,16 @@ function onRelayTimer() {
 
 function setOutputPin( setOn, callback ) {
 
-	api.spawnProgram( null, "gpio", [ "write", "" + GPIO_PIN_RELAY, setOn ? "1" : "0" ], callback );
+	if ( GPIO_PIN_RELAY >= 0 ) {
+
+		api.spawnProgram( null, "gpio", [ "write", "" + GPIO_PIN_RELAY, setOn ? "1" : "0" ], callback );
+
+	}
+	else {
+
+		if ( callback ) callback();
+
+	}
 
 }
 

@@ -211,11 +211,23 @@ function captureCamera() {
 				],
 				( code, output, error ) => {
 
-				if ( cameraImageMessageId !== null ) {
+					if ( cameraImageMessageId !== null ) {
 
-					api.tg.deleteMessageThen( cameraImageMessageId, () => {
+						api.tg.deleteMessageThen( cameraImageMessageId, () => {
 
-						cameraImageMessageId = null;
+							cameraImageMessageId = null;
+							api.tg.sendPhoto( caption, imagePath, true, ( message1 ) => {
+
+								cameraImageMessageId = message1.message_id;
+								onFrameCaptured();
+
+							} );
+
+						} );
+
+					}
+					else {
+
 						api.tg.sendPhoto( caption, imagePath, true, ( message1 ) => {
 
 							cameraImageMessageId = message1.message_id;
@@ -223,25 +235,14 @@ function captureCamera() {
 
 						} );
 
-					} );
+					}
 
 				}
-				else {
-
-					api.tg.sendPhoto( caption, imagePath, true, ( message1 ) => {
-
-						cameraImageMessageId = message1.message_id;
-						onFrameCaptured();
-
-					} );
-
-				}
-
-			} );
+			);
 
 			function onFrameCaptured() {
 
-				//fs.rmSync( imagePath );
+				fs.rmSync( imagePath );
 
 			}
 
