@@ -49,7 +49,7 @@ function init( moduleParam, apiParam ) {
 
 	}
 
-	var timesInMinutes = [ 1, 5, 10, 15, 20, 25, 30, 45, 60 ];
+	var timesInMinutes = [ 1, 5, 10, 20, 30, 40, 60, 90 ];
 
 	api.tg.createMenu(
 		"Set timer",
