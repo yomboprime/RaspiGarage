@@ -112,6 +112,7 @@ function onRelayTimer() {
 
 	relayTimerIntervalId = 0;
 
+	api.tg.clearAllMenus();
 	if ( api.tg.isMenuShown( "Main menu" ) ) api.showMainMenu();
 
 	api.tg.sendTextMessage(
