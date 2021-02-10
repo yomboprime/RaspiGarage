@@ -25,10 +25,11 @@ function init( moduleParam, apiParam ) {
 	};
 	mod.menuEntrySelected = function() {
 
+		api.tg.clearAllMenus();
+
 		if ( relayTimerIntervalId === 0 ) {
 
 			// Show start timer menu
-			api.tg.clearAllMenus();
 			api.tg.sendMenu( api.tg.menusByName[ "Set timer" ] );
 
 		}
