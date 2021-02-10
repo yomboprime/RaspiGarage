@@ -191,7 +191,9 @@ function captureCamera() {
 	captureFrame();
 
 	function captureFrame() {
+
 		var imagePath = api.pathJoin( imagesPath, "CameraImage_" + ( new Date() ) + ".png" );
+
 		api.spawnProgram(
 			null,
 			"fswebcam",
@@ -237,7 +239,11 @@ function captureCamera() {
 
 		function onFrameCaptured() {
 
-			fs.unlinkSync( imagePath );
+			setTimeout( () => {
+
+				fs.unlinkSync( imagePath );
+
+			}, 3000 );
 
 		}
 
