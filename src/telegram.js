@@ -504,9 +504,11 @@ function downloadTelegramFile( telegramFile, localPath, callback ) {
 				var contents = data.read();
 
 				// Write the image to its directory
-				fs.writeFileSync( localPath, contents );
+				fs.writeFile( localPath, contents, () => {
 
-				callback( true );
+					callback( true );
+
+				} );
 
 			}
 			else callback( false );

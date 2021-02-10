@@ -177,77 +177,73 @@ function captureCamera() {
 
 	var imagesPath = api.pathJoin( mod.config.captureTempPath, "camera" );
 
-	var res = null;
-	try {
+	fs.mkdir( imagesPath, { recursive: true }, ( errfs ) => {
 
-		res = fs.mkdirSync( imagesPath, { recursive: true } );
+		if ( errfs ) {
 
-	}
-	catch ( e ) {
-		console.log( "Could not create imagesPath: " + imagesPath );
-		return;
-	}
-
-	captureFrame();
-
-	function captureFrame() {
-
-		var imagePath = api.pathJoin( imagesPath, "CameraImage_" + Date.now() + ".png" );
-
-		api.spawnProgram(
-			null,
-			"fswebcam",
-			[
-				"-q",
-				"-d",
-				mod.config.cameraDevice,
-				"--no-banner",
-				"-r",
-				"" + mod.config.cameraWidth + "x" + mod.config.cameraHeight,
-				imagePath
-			],
-			( code, output, error ) => {
-
-				if ( cameraImageMessageId !== null ) {
-
-					api.tg.deleteMessageThen( cameraImageMessageId, () => {
-
-						cameraImageMessageId = null;
-						api.tg.sendPhoto( "", imagePath, true, ( message1 ) => {
-
-							cameraImageMessageId = message1.message_id;
-							onFrameCaptured();
-
-						} );
-
-					} );
-
-				}
-				else {
-
-					api.tg.sendPhoto( "", imagePath, true, ( message1 ) => {
-
-						cameraImageMessageId = message1.message_id;
-						onFrameCaptured();
-
-					} );
-
-				}
-
-			}
-		);
-
-		function onFrameCaptured() {
-
-			setTimeout( () => {
-
-				fs.unlinkSync( imagePath );
-
-			}, 3000 );
+			console.log( "Could not create imagesPath: " + imagesPath );
+			return;
 
 		}
 
-	}
+		captureFrame();
+
+		function captureFrame() {
+
+			var imagePath = api.pathJoin( imagesPath, "CameraImage_" + Date.now() + ".png" );
+
+			api.spawnProgram(
+				null,
+				"fswebcam",
+				[
+					"-q",
+					"-d",
+					mod.config.cameraDevice,
+					"--no-banner",
+					"-r",
+					"" + mod.config.cameraWidth + "x" + mod.config.cameraHeight,
+					imagePath
+				],
+				( code, output, error ) => {
+
+					if ( cameraImageMessageId !== null ) {
+
+						api.tg.deleteMessageThen( cameraImageMessageId, () => {
+
+							cameraImageMessageId = null;
+							api.tg.sendPhoto( "", imagePath, true, ( message1 ) => {
+
+								cameraImageMessageId = message1.message_id;
+								onFrameCaptured( imagePath );
+
+							} );
+
+						} );
+
+					}
+					else {
+
+						api.tg.sendPhoto( "", imagePath, true, ( message1 ) => {
+
+							cameraImageMessageId = message1.message_id;
+							onFrameCaptured( imagePath );
+
+						} );
+
+					}
+
+				}
+			);
+
+			function onFrameCaptured( imagePath ) {
+
+				fs.unlink( imagePath, () => {} );
+
+			}
+
+		}
+
+	} );
 
 }
 
