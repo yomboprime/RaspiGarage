@@ -192,7 +192,7 @@ function captureCamera() {
 
 	function captureFrame() {
 
-		var imagePath = api.pathJoin( imagesPath, "CameraImage_" + ( new Date() ) + ".png" );
+		var imagePath = api.pathJoin( imagesPath, "CameraImage_" + Date.now() + ".png" );
 
 		api.spawnProgram(
 			null,
@@ -239,11 +239,7 @@ function captureCamera() {
 
 		function onFrameCaptured() {
 
-			setTimeout( () => {
-
-				fs.unlinkSync( imagePath );
-
-			}, 3000 );
+			fs.unlinkSync( imagePath );
 
 		}
 
