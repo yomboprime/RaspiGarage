@@ -21,7 +21,7 @@
 			"setPinAsOutputCommandCWD": "./",
 			"setPinAsOutputCommand": "gpio mode <pin> out",
 			"setPinStateCommandCWD": "./",
-			"setPinStateCommand": "gpio write <pin> <pinValue>",
+			"setPinStateCommand": "gpio write <pin> <pinValue>"
         }
     }
 }
