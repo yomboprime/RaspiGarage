@@ -11,6 +11,17 @@
             "cameraFPS": 5,
             "captureTempPath": "./tempCaptures/"
         },
-        "RelayTimer": {}
+        "RelayTimer": {
+			"relayPin": 1,
+			"setPinAsOutputCommandCWD1": "./scripts/",
+			"setPinAsOutputCommand1": "python turnOnOffGPIO.py <pinValue>",
+			"setPinStateCommandCWD1": "./scripts/",
+			"setPinStateCommand1": "python turnOnOffGPIO.py <pinValue>",
+
+			"setPinAsOutputCommandCWD": "./",
+			"setPinAsOutputCommand": "gpio mode <pin> out",
+			"setPinStateCommandCWD": "./",
+			"setPinStateCommand": "gpio write <pin> <pinValue>",
+        }
     }
 }

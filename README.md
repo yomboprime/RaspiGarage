@@ -36,7 +36,7 @@ Now the bot is ready to run, by issuing the command ```npm start```. You just wi
 Set the script ```RaspiGarage/run.sh``` to execute at system boot up. You may want to add lines like the following ones to the end of the file ```/etc/rc.local```:
 
 ```
-/home/pi/RaspiGarage/run.sh || exit 1
+/home/pi/RaspiGarage/scripts/run.sh || exit 1
 
 exit 0
 ```

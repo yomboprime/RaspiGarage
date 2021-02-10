@@ -1,6 +1,4 @@
 
-const GPIO_PIN_RELAY = 1;
-
 var api = null;
 var mod = null;
 
@@ -22,7 +20,7 @@ function init( moduleParam, apiParam ) {
 	mod.getInfoString = getTimerRemainingTimeString;
 	mod.finish = ( callback ) => {
 
-		setOutputPin( false, callback );
+		setOutputPinValue( false, callback );
 
 	};
 	mod.menuEntrySelected = function() {
@@ -41,7 +39,7 @@ function init( moduleParam, apiParam ) {
 			relayTimerStartedAt = -1;
 			relayTimerPeriodMinutes = 0;
 			relayTimerIntervalId = 0;
-			setOutputPin( false );
+			setOutputPinValue( false );
 			api.tg.sendTextMessage( "ℹ️ " + api.translation[ "You have stopped the relay timer." ] );
 			api.showMainMenu();
 
@@ -77,7 +75,7 @@ function init( moduleParam, apiParam ) {
 
 			if ( optionIndex < timesInMinutes.length ) {
 
-				setOutputPin( true );
+				setOutputPinValue( true );
 				relayTimerPeriodMinutes = timesInMinutes[ optionIndex ];
 				relayTimerIntervalId = setTimeout( onRelayTimer, relayTimerPeriodMinutes * 60 * 1000 );
 				//relayTimerIntervalId = setTimeout( onRelayTimer, relayTimerPeriodMinutes * 1000 );
@@ -97,18 +95,13 @@ function init( moduleParam, apiParam ) {
 	);
 
 	// Set pin as output and write 0
-	if ( GPIO_PIN_RELAY >= 0 ) {
-
-		api.spawnProgram( null, "gpio", [ "mode", "" + GPIO_PIN_RELAY, "out" ] );
-
-	}
-	setOutputPin( false );
+	setPinAsOutput();
 
 }
 
 function onRelayTimer() {
 
-	setOutputPin( false );
+	setOutputPinValue( false );
 
 	relayTimerIntervalId = 0;
 
@@ -122,11 +115,34 @@ function onRelayTimer() {
 
 }
 
-function setOutputPin( setOn, callback ) {
+function setPinAsOutput() {
 
-	if ( GPIO_PIN_RELAY >= 0 ) {
+	if ( mod.config.relayPin >= 0 ) {
 
-		api.spawnProgram( null, "gpio", [ "write", "" + GPIO_PIN_RELAY, setOn ? "1" : "0" ], callback );
+		var params = mod.config.setPinAsOutputCommand
+			.replace( "<pin>", "" + mod.config.relayPin )
+			.split( " " );
+		var command = params[ 0 ];
+		params.splice( 0, 1 );
+
+		api.spawnProgram( mod.config.setPinAsOutputCommandCWD, command, params );
+
+	}
+
+}
+
+function setOutputPinValue( setOn, callback ) {
+
+	if ( mod.config.relayPin >= 0 ) {
+
+		var params = mod.config.setPinStateCommand
+			.replace( "<pin>", "" + mod.config.relayPin )
+			.replace( "<pinValue>", setOn ? '1' : '0' )
+			.split( " " );
+		var command = params[ 0 ];
+		params.splice( 0, 1 );
+
+		api.spawnProgram( mod.config.setPinStateCommandCWD, command, params, callback );
 
 	}
 	else {
