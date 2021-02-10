@@ -239,7 +239,11 @@ function captureCamera() {
 
 		function onFrameCaptured() {
 
-			fs.unlinkSync( imagePath );
+			setTimeout( () = > {
+
+				fs.unlinkSync( imagePath );
+
+			}, 3000 );
 
 		}
 
