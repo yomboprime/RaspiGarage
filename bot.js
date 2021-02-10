@@ -467,13 +467,13 @@ function updateSystem() {
 
 					setTimeout( finish, 1000, EXIT_REBOOTING );
 
-				}, true );
+				} );
 
-			}, true );
+			} );
 
-		}, true );
+		} );
 
-	}, true );
+	} );
 
 }
 
@@ -489,7 +489,7 @@ function spawnProgram( cwd, program, args, callback, cancelOutput ) {
 
 	p.stdout.on( 'data', ( data ) => {
 
-		if ( ! cancelOutput ) output += data;
+		if ( cancelOutput === false ) output += data;
 
 	} );
 
@@ -525,7 +525,7 @@ function execProgram( cwd, command, callback, cancelOutput ) {
 
 	p.stdout.on( 'data', ( data ) => {
 
-		if ( ! cancelOutput ) output += data;
+		if ( cancelOutput === false ) output += data;
 
 	} );
 
@@ -585,14 +585,14 @@ function exit( action ) {
 			salute( false );
 			spawnProgram( null, "sudo", [ "reboot" ], () => {
 				process.exit( 0 );
-			}, 1000 );
+			} );
 			break;
 
 		case EXIT_POWER_OFF:
 			salute( false );
 			spawnProgram( null, "sudo", [ "shutdown", "now" ], () => {
 				process.exit( 0 );
-			}, 1000 );
+			} );
 			break;
 
 		default:
