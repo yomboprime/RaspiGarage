@@ -192,42 +192,28 @@ function captureCamera() {
 
 	function captureFrame() {
 
-		api.getLocaleDate( ( date ) => {
+		var imagePath = api.pathJoin( imagesPath, "CameraImage_" + ( new Date() ) + ".png" );
+		var caption = "Camera "+ date;
 
-			var imagePath = api.pathJoin( imagesPath, "CameraImage_" + date + ".png" );
-			var caption = "Camera "+ date;
+		api.spawnProgram(
+			null,
+			"fswebcam",
+			[
+				"-q",
+				"-d",
+				mod.config.cameraDevice,
+				"--no-banner",
+				"-r",
+				"" + mod.config.cameraWidth + "x" + mod.config.cameraHeight,
+				imagePath
+			],
+			( code, output, error ) => {
 
-			api.spawnProgram(
-				null,
-				"fswebcam",
-				[
-					"-q",
-					"-d",
-					mod.config.cameraDevice,
-					"--no-banner",
-					"-r",
-					"" + mod.config.cameraWidth + "x" + mod.config.cameraHeight,
-					imagePath
-				],
-				( code, output, error ) => {
+				if ( cameraImageMessageId !== null ) {
 
-					if ( cameraImageMessageId !== null ) {
+					api.tg.deleteMessageThen( cameraImageMessageId, () => {
 
-						api.tg.deleteMessageThen( cameraImageMessageId, () => {
-
-							cameraImageMessageId = null;
-							api.tg.sendPhoto( caption, imagePath, true, ( message1 ) => {
-
-								cameraImageMessageId = message1.message_id;
-								onFrameCaptured();
-
-							} );
-
-						} );
-
-					}
-					else {
-
+						cameraImageMessageId = null;
 						api.tg.sendPhoto( caption, imagePath, true, ( message1 ) => {
 
 							cameraImageMessageId = message1.message_id;
@@ -235,18 +221,28 @@ function captureCamera() {
 
 						} );
 
-					}
+					} );
 
 				}
-			);
+				else {
 
-			function onFrameCaptured() {
+					api.tg.sendPhoto( caption, imagePath, true, ( message1 ) => {
 
-				fs.unlinkSync( imagePath );
+						cameraImageMessageId = message1.message_id;
+						onFrameCaptured();
+
+					} );
+
+				}
 
 			}
+		);
 
-		} );
+		function onFrameCaptured() {
+
+			fs.unlinkSync( imagePath );
+
+		}
 
 	}
 

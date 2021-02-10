@@ -628,16 +628,6 @@ function getInfoString( params ) {
 
 }
 
-function getLocaleDate( callback ) {
-
-	spawnProgram( null, "date", [ ], ( code, output, err ) => {
-
-		callback( output.replace( '\n', '' ) );
-
-	} );
-
-}
-
 function iterateAsync( array, methodName, onDone ) {
 
 	iterateAsyncInternal( 0 );
@@ -676,7 +666,6 @@ function createAPI() {
 		spawnProgram: spawnProgram,
 		execProgram: execProgram,
 
-		getLocaleDate: getLocaleDate,
 		pathJoin: pathJoin
 
 	}
