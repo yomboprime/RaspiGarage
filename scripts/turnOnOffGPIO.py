@@ -13,4 +13,4 @@ pin = port.PA12
 
 gpio.init()
 gpio.setcfg(pin, gpio.OUTPUT)
-gpio.output(pin, sys.argv[1])
+gpio.output(pin, int(sys.argv[1]))
