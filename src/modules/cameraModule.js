@@ -191,10 +191,7 @@ function captureCamera() {
 	captureFrame();
 
 	function captureFrame() {
-
 		var imagePath = api.pathJoin( imagesPath, "CameraImage_" + ( new Date() ) + ".png" );
-		var caption = "Camera "+ date;
-
 		api.spawnProgram(
 			null,
 			"fswebcam",
@@ -214,7 +211,7 @@ function captureCamera() {
 					api.tg.deleteMessageThen( cameraImageMessageId, () => {
 
 						cameraImageMessageId = null;
-						api.tg.sendPhoto( caption, imagePath, true, ( message1 ) => {
+						api.tg.sendPhoto( "", imagePath, true, ( message1 ) => {
 
 							cameraImageMessageId = message1.message_id;
 							onFrameCaptured();
@@ -226,7 +223,7 @@ function captureCamera() {
 				}
 				else {
 
-					api.tg.sendPhoto( caption, imagePath, true, ( message1 ) => {
+					api.tg.sendPhoto( "", imagePath, true, ( message1 ) => {
 
 						cameraImageMessageId = message1.message_id;
 						onFrameCaptured();
