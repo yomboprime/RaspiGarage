@@ -22,7 +22,7 @@
 			"setPinAsOutputCommandCWD": "./scripts/",
 			"setPinAsOutputCommand": "sudo python2 turnOnOffGPIO.py 0",
 			"setPinStateCommandCWD": "./scripts/",
-			"setPinStateCommand": "sudo python2 turnOnOffGPIO.py <pinValue>",
+			"setPinStateCommand": "sudo python2 turnOnOffGPIO.py <pinValue>"
 
         }
     }
