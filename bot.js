@@ -68,9 +68,12 @@ function initServer() {
 
 	loadTranslation();
 
+	var tok = loadFile( "./config/token", "utf8" ).split( "\n" )[ 0 ];
+	var cid = parseInt( loadFile( "./config/chat_id", "utf8" ).split( "\n" )[ 0 ] );
+
 	tg.startTelegram(
-		loadFile( "./config/token" ),
-		parseInt( loadFile( "./config/chat_id" ) ),
+		tok,
+		cid
 		parseUserInput,
 		translation,
 		() => {
