@@ -73,7 +73,7 @@ function initServer() {
 
 	tg.startTelegram(
 		tok,
-		cid
+		cid,
 		parseUserInput,
 		translation,
 		() => {
